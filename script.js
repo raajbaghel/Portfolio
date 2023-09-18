@@ -39,31 +39,3 @@ const blurHeader = () => {
 }
 window.addEventListener('scroll', blurHeader)
 
-// Sending mail from contact form to me
-
-const contactForm = document.getElementById('contact-form');
-const contactMessage = document.getElementById('contact-message');
-
-const sendEmail = (e) => {
-    e.preventDefault()
-
-    // service id - templateid  - formid - puvlickey
-
-    emailjs.sendForm('service_bdvl4x8', 'template_q7gkblq', '#contact-form', '0wwvIjJpp-JpHa1sn')
-        .then(() => {
-            // show sent msg
-            contactMessage.textContent = 'Message sent succesfully ✅';
-
-            setTimeout(() => {
-                contactMessage.textContent = ''
-            }, 5000)
-            //  clear input
-            contactForm.reset()
-        }, () => {
-            // show error message
-            contactMessage.textContent = 'Message not sent (service error) ❌';
-
-        })
-}
-
-contactForm.addEventListener('submit', sendEmail);
